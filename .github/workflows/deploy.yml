@@ -7,7 +7,7 @@ on:
 
 jobs:
   test-build-deploy:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux]
 
     steps:
       - name: Checkout
@@ -20,7 +20,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install --no-fund --no-audit
 
       - name: Run tests
         run: npm test
@@ -28,16 +28,6 @@ jobs:
       - name: Build site
         run: npm run build
 
-      - name: Deploy via SSH
-        env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_PORT: ${{ secrets.SSH_PORT }}
-          SSH_KEY: ${{ secrets.SSH_KEY }}
-          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+      - name: Deploy to Apache root
         run: |
-          mkdir -p ~/.ssh
-          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -p "${SSH_PORT:-22}" -H "$SSH_HOST" >> ~/.ssh/known_hosts
-          rsync -az --delete -e "ssh -i ~/.ssh/id_rsa -p ${SSH_PORT:-22}" dist/ "$SSH_USER@$SSH_HOST:$DEPLOY_PATH/"
+          rsync -az --delete dist/ /var/www/lab1/
