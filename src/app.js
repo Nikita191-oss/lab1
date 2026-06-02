@@ -1,4 +1,4 @@
-export function getStatusMessage(studentName = 'Валеев Никита') {
+export function getStatusMessage(studentName = 'Никита') {
   return `${studentName}`;
 }
 
