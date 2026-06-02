@@ -7,28 +7,16 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main class="shell">
-      <section class="card">
-        <p class="eyebrow">Web deployment lab</p>
-        <h1>Первая лабораторная работа</h1>
-        <p class="lead" data-status>
-          Сборка и автодеплой будут запускаться после успешного теста.
-        </p>
-
-        <div class="meta">
-          <div>
-            <span class="label">Git</span>
-            <span class="value">push в ветку main</span>
-          </div>
-          <div>
-            <span class="label">CI/CD</span>
-            <span class="value">test → build → deploy</span>
-          </div>
-          <div>
-            <span class="label">Server</span>
-            <span class="value">через SSH и rsync</span>
-          </div>
-        </div>
+    <main class="page">
+      <section class="panel">
+        <p class="caption">Лабораторная работа 1</p>
+        <h1>Развертывание web-решения</h1>
+        <p class="text" data-status>Сайт обновляется через GitHub Actions после успешного теста.</p>
+        <ul class="list">
+          <li>Git репозиторий подключен.</li>
+          <li>Тест запускается автоматически.</li>
+          <li>Файлы копируются на Apache сервер.</li>
+        </ul>
       </section>
     </main>
 

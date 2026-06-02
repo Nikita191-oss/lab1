@@ -1,5 +1,5 @@
 export function getStatusMessage(studentName = 'студент') {
-  return `Готово к проверке: ${studentName}. CI/CD запускает тест и затем обновляет сервер.`;
+  return `Готово к проверке: ${studentName}.`;
 }
 
 const canUseDom = typeof document !== 'undefined';

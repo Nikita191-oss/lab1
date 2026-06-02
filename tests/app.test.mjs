@@ -3,8 +3,5 @@ import assert from 'node:assert/strict';
 import { getStatusMessage } from '../src/app.js';
 
 test('getStatusMessage returns a deploy-ready string', () => {
-  assert.equal(
-    getStatusMessage('Алексей'),
-    'Готово к проверке: Алексей. CI/CD запускает тест и затем обновляет сервер.'
-  );
+  assert.equal(getStatusMessage('Алексей'), 'Готово к проверке: Алексей.');
 });
