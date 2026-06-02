@@ -1,5 +1,5 @@
-export function getStatusMessage(studentName = 'студент') {
-  return `Готово к проверке: ${studentName}.`;
+export function getStatusMessage(studentName = 'Валеев Никита') {
+  return `${studentName}`;
 }
 
 const canUseDom = typeof document !== 'undefined';
