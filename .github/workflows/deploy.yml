@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  test-build-deploy:
+  test-deploy:
     runs-on: [self-hosted, linux]
 
     steps:
@@ -24,9 +24,6 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Build site
-        run: npm run build
-
       - name: Deploy to Apache root
         run: |
-          rsync -az --delete dist/ /var/www/lab1/
+          rsync -az --delete src/ /var/www/lab1/
